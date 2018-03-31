@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Organic_Trending</title>
+  <meta name="generator" content="Google Web Designer 3.0.1.0319">
+  <style type="text/css" id="gwd-text-style">
+    p {
+      margin: 0px;
+    }
+    h1 {
+      margin: 0px;
+    }
+    h2 {
+      margin: 0px;
+    }
+    h3 {
+      margin: 0px;
+    }
+  </style>
+  <style type="text/css">
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0px;
+    }
+    body {
+      background-color: transparent;
+      transform: perspective(1400px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      transform-style: preserve-3d;
+      width: 1300px;
+      height: 550px;
+    }
+    .gwd-p-pndd {
+      position: absolute;
+      height: 54px;
+      text-align: center;
+      left: 200px;
+      top: 10px;
+      width: 900px;
+    }
+    .gwd-h1-1ez0 {
+      position: absolute;
+      width: 422px;
+      height: 28px;
+      text-align: center;
+      left: 575px;
+      top: 64px;
+      color: rgb(68, 34, 239);
+    }
+    .gwd-div-6p60 {
+      position: absolute;
+      background-image: none;
+      background-color: rgb(223, 219, 219);
+      width: 1340px;
+      height: 450px;
+      overflow: auto;
+      left: 15px;
+      top: 119px;
+    }
+    .gwd-div-38rd {
+      position: absolute;
+      width: 200px;
+      left: 10px;
+      top: 10px;
+      height: 430px;
+    }
+    .gwd-div-vby6 {
+      top: 10px;
+      width: 700px;
+      left: 320px;
+      font-size: 20px;
+    }
+    .gwd-div-1ei9 {
+      left: 110px;
+    }
+    .gwd-div-1kvn {
+      width: 90px;
+      left: 10px;
+      text-align: center;
+      font-size: 20px;
+    }
+    .gwd-div-1ns2 {
+      top: 10px;
+      left: 1030px;
+      width: 100px;
+    }
+    .gwd-div-q53u {
+      left: 1145px;
+      width: 150px;
+      text-align: center;
+      font-size: 20px;
+    }
+    .gwd-p-edbb {
+      position: absolute;
+      transform-origin: -265.1px 299px 0px;
+      height: 20px;
+      text-align: center;
+      left: 16px;
+      top: 99px;
+      width: 90px;
+      font-weight: bold;
+    }
+    .gwd-p-1kka {
+      width: 200px;
+      text-align: center;
+      left: 125px;
+    }
+    .gwd-p-3ej1 {
+      left: 403px;
+    }
+    .gwd-p-1hx8 {
+      left: 986px;
+    }
+    .gwd-p-1g1m {
+      top: 99px;
+      left: 1132px;
+    }
+    .gwd-div-16pi {
+      text-align: center;
+      font-size: 20px;
+    }
+    .gwd-div-1655 {
+      text-align: center;
+      font-size: 20px;
+    }
+    .gwd-div-1d6p {
+      position: absolute;
+      width: 130px;
+      height: 71px;
+      top: 10px;
+      left: 20px;
+    }
+    .loader {
+      border-width: 5px;
+      border-style: solid;
+      border-color: rgb(52, 152, 219) rgb(243, 243, 243) rgb(243, 243, 243);
+      border-image: initial;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      animation: spin 2s linear infinite;
+    }
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    .gwd-p-13ux {
+      position: absolute;
+      width: 118px;
+      height: 40px;
+      text-align: right;
+      top: 24px;
+      color: rgb(28, 4, 151);
+      font-size: 12px;
+      left: 1182px;
+    }
+  </style>
+  <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
+  <script language="JavaScript">
+    steem.api.setOptions({
+      url: 'https://api.steemit.com'
+    });
+
+    var names = [];
+    search();
+
+    function search()
+
+     {
+
+      var query = {
+        tag: '',
+        limit: 100
+      };
+
+      steem.api.getDiscussionsByTrending(query, function(err, result) {
+
+
+        form_array1(result);
+
+      });
+
+    }
+
+    function form_array1(result) {
+
+      var post_array = [];
+      post_array = result;
+
+
+      var aut = result[99].author;
+      var perm = result[99].permlink;
+      var query = {
+        tag: '',
+        limit: 100,
+        start_author: aut,
+        start_permlink: perm
+      };
+      steem.api.getDiscussionsByTrending(query, function(err, result) {
+        post_array = post_array.concat(result);
+
+        form_array2(post_array);
+
+      });
+
+
+    }
+
+    function form_array2(result) {
+
+      var post_array = [];
+      post_array = result;
+
+
+      var aut = result[199].author;
+      var perm = result[199].permlink;
+      var query = {
+        tag: '',
+        limit: 100,
+        start_author: aut,
+        start_permlink: perm
+      };
+      steem.api.getDiscussionsByTrending(query, function(err, result) {
+        post_array = post_array.concat(result);
+
+        form_array3(post_array);
+
+      });
+
+
+    }
+
+    function form_array3(result) {
+
+      var post_array = [];
+      post_array = result;
+
+
+      var aut = result[299].author;
+      var perm = result[299].permlink;
+      var query = {
+        tag: '',
+        limit: 100,
+        start_author: aut,
+        start_permlink: perm
+      };
+      steem.api.getDiscussionsByTrending(query, function(err, result) {
+        post_array = post_array.concat(result);
+
+        form_array4(post_array);
+
+      });
+
+
+    }
+
+    function form_array4(result) {
+
+      var post_array = [];
+      post_array = result;
+
+
+      var aut = result[399].author;
+      var perm = result[399].permlink;
+      var query = {
+        tag: '',
+        limit: 100,
+        start_author: aut,
+        start_permlink: perm
+      };
+      steem.api.getDiscussionsByTrending(query, function(err, result) {
+        post_array = post_array.concat(result);
+
+
+        evaluate(post_array);
+      });
+
+
+    }
+
+    function evaluate(result) {
+      var bots = ["postdoctor", "moneymatchgaming", "slimwhale", "boostbot", "honestbot", "ebargains", "lost-ninja", "estream.studios", "adriatik", "redwhale", "minnowhelper", "mrswhale", "foxyd", "mitsuko", "dailyupvotes", "lovejuice", "steembloggers", "booster", "megabot", "voterunner", "authors.league", "canalcrypto", "whalebuilder", "mercurybot", "msp-bidbot", "promobot", "upmewhale", "redlambo", "lrd", "lightningbolt", "sunrawhale", "upyou", "thebot", "onlyprofitbot", "pushbot", "flymehigh", "nado.bot", "seakraken", "spydo", "childfund", "minnowvotes", "dolphinbot", "upme", "upboater", "proffit", "bluebot", "brupvoter", "oceanwhale", "jerrybanfield", "luckyvotes", "minnowfairy", "estabond", "bodzila", "peace-bot", "appreciator", "discordia", "emperorofnaps", "zapzap", "cryptoempire", "bearwards", "alphaprime", "therising", "buildawhale", "aksdwi", "sleeplesswhale", "isotonic", "noicebot", "upgoater", "dlivepromoter", "upmyvote", "youtake", "smartsteem", "fishbaitbot", "rocky1", "shares", "boomerang", "brandonfrye", "postpromoter", "pushup", "singing.beauty", "edensgarden", "pwrup", "inciter", "chronocrypto", "allaz", "sneaky-ninja", "utopian-io"];
+      var activevotes = [];
+      var activevoter = []
+      var n_result = [];
+      var control = 0;
+      //console.log(bots.length,bots,result[0].active_votes.voter);
+
+      var i = 0;
+
+      for (let i = 0; i < result.length; i++) {
+        control = 0;
+        activevotes = result[i].active_votes;
+        for (let j = 0; j < activevotes.length; j++) {
+
+          if (bots.includes(activevotes[j].voter)) {
+            control = 1;
+          }
+        }
+        if (control == 0) {
+          n_result.push(result[i]);
+        }
+      }
+
+      write_div(n_result);
+      console.log(n_result);
+
+    }
+
+
+    function write_div(result) {
+      for (let i = 0; i < result.length; i++) {
+        document.getElementById("order").innerHTML = document.getElementById("order").innerHTML + ((i + 1) + "<br>");
+        document.getElementById("poster").innerHTML = document.getElementById("poster").innerHTML + (result[i].author + "<br>");
+        var str = "https://steemit.com/@" + result[i].author + "/" + result[i].permlink;
+        var lin = (result[i].permlink).substring(0, 70) + ".......";
+
+        document.getElementById("link").innerHTML = document.getElementById("link").innerHTML + lin.link(str) + "<br />";
+        document.getElementById("vote_qty").innerHTML = document.getElementById("vote_qty").innerHTML + result[i].active_votes.length + "<br />";
+        document.getElementById("vote_value").innerHTML = document.getElementById("vote_value").innerHTML + result[i].pending_payout_value + "<br />";
+
+      }
+      spinner.style.display = "none"
+
+
+    }
+  </script>
+</head>
+
+<body class="htmlNoPages">
+  <h1 class="gwd-p-pndd">STEEMIT ORGANIC TRENDING POSTS</h1><em class="gwd-h1-1ez0">*Posts in trending page that didn't use upvote bots*</em>
+  <div class="gwd-div-6p60" id="main_container">
+    <div class="gwd-div-38rd gwd-div-1ei9 gwd-div-1655" id="poster"></div>
+    <div class="gwd-div-38rd gwd-div-1ei9 gwd-div-1ns2 gwd-div-16pi" id="vote_qty"></div>
+    <div class="gwd-div-38rd gwd-div-1ei9 gwd-div-1ns2 gwd-div-q53u" id="vote_value"></div>
+    <div class="gwd-div-38rd gwd-div-1ei9 gwd-div-1kvn" id="order"></div>
+    <div class="gwd-div-38rd gwd-div-vby6" id="link"></div>
+  </div>
+  <p class="gwd-p-edbb gwd-p-1kka">POSTER</p>
+  <p class="gwd-p-edbb gwd-p-1kka gwd-p-3ej1">LINK</p>
+  <p class="gwd-p-edbb gwd-p-1kka gwd-p-3ej1 gwd-p-1hx8"># of VOTES</p>
+  <p class="gwd-p-edbb gwd-p-1kka gwd-p-3ej1 gwd-p-1hx8 gwd-p-1g1m">VOTES VALUE</p>
+  <p class="gwd-p-edbb">RANK</p>
+  <div class="gwd-div-1d6p" id="spinner">please wait...
+    <div class="loader" id="loader"></div>
+  </div>
+  <p class="gwd-p-13ux">@firedream</p>
+</body>
+
+</html>
