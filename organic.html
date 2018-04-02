@@ -129,17 +129,17 @@
       position: absolute;
       width: 130px;
       height: 71px;
-      top: 10px;
-      left: 20px;
+      left: 664px;
+      top: 242px;
     }
     .loader {
-      border-width: 5px;
+      border-width: 20px;
       border-style: solid;
       border-color: rgb(52, 152, 219) rgb(243, 243, 243) rgb(243, 243, 243);
       border-image: initial;
       border-radius: 50%;
-      width: 20px;
-      height: 20px;
+      width: 100px;
+      height: 100px;
       animation: spin 2s linear infinite;
     }
     @keyframes spin {
@@ -168,22 +168,92 @@
       font-size: 12px;
       left: 1182px;
     }
+    .gwd-div-4l28 {
+      position: absolute;
+      width: 190px;
+      height: 32px;
+      top: 55px;
+      left: 350px;
+    }
+    .gwd-select-15e9 {
+      top: 0px;
+      left: 0px;
+      transform-style: preserve-3d;
+      height: 20px;
+      transform: translate3d(70px, 5px, 0px);
+      width: 120px;
+    }
+    .gwd-p-wpmt {
+      position: absolute;
+      font-weight: bold;
+      font-size: 20px;
+      left: -1px;
+      top: 3px;
+    }
+    .gwd-p-1a9u {
+      left: 403px;
+      top: 99px;
+    }
   </style>
   <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
   <script language="JavaScript">
     steem.api.setOptions({
       url: 'https://api.steemit.com'
     });
+  
+  steem.api.getTrendingTags("", 100, function(err, result) {
+  
+    var tags=[];
+   
+    for (let i = 1; i < result.length; i++) {
+     tags[i]=result[i].name;
+       document.getElementById('tags').add( new Option( tags[i] ) );
+    }
+    
+    console.log(tags);
+    
+
+     start(document.getElementById('tags').value);
+});
+    
+   
+    
+    
 
     var names = [];
-    search();
-
-    function search()
+  
+   
+    function re_start(){
+      spinner.style.display = "block"
+      document.getElementById("order").innerHTML ="";
+        document.getElementById("poster").innerHTML ="";
+       document.getElementById("link").innerHTML = "";
+        document.getElementById("vote_qty").innerHTML = "";
+        document.getElementById("vote_value").innerHTML ="";
+      
+      start(document.getElementById('tags').value);
+    }
+    
+    
+    
+    function start(val){
+    
+   
+    if (val=="all"){
+      val="";
+      search(val);
+    }
+    else{
+      search(val);
+    }
+    
+    }
+    function search(val)
 
      {
 
       var query = {
-        tag: '',
+        tag: val,
         limit: 100
       };
 
@@ -350,15 +420,22 @@
     <div class="gwd-div-38rd gwd-div-1ei9 gwd-div-1kvn" id="order"></div>
     <div class="gwd-div-38rd gwd-div-vby6" id="link"></div>
   </div>
-  <p class="gwd-p-edbb gwd-p-1kka">POSTER</p>
-  <p class="gwd-p-edbb gwd-p-1kka gwd-p-3ej1">LINK</p>
+  <p class="gwd-p-edbb gwd-p-1kka">AUTHOR</p>
+  <p class="gwd-p-edbb gwd-p-1kka gwd-p-3ej1 gwd-p-1a9u">LINK</p>
   <p class="gwd-p-edbb gwd-p-1kka gwd-p-3ej1 gwd-p-1hx8"># of VOTES</p>
   <p class="gwd-p-edbb gwd-p-1kka gwd-p-3ej1 gwd-p-1hx8 gwd-p-1g1m">VOTES VALUE</p>
   <p class="gwd-p-edbb">RANK</p>
-  <div class="gwd-div-1d6p" id="spinner">please wait...
+  <div class="gwd-div-1d6p" id="spinner">
     <div class="loader" id="loader"></div>
   </div>
   <p class="gwd-p-13ux">@firedream</p>
+  <div class="gwd-div-4l28" id="tags_div">
+    <select class="gwd-select-15e9" id="tags" onchange="re_start()">
+      <option value="all">all</option>
+
+    </select>
+    <p class="gwd-p-wpmt">TAGS :</p>
+  </div>
 </body>
 
 </html>
