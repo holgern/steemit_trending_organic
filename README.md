@@ -67,6 +67,11 @@ This function is writing data to the div's for user display.
 This tool is mainly designed for users to see and evaluate the organic posts in trending page.
 
 With this, users can make analysis and post their analysis results and findings about organic posts and how they trend.
+
+* ### Update 03.04.2018
+TAGS selection added.
+Now, user can select the tags to see *non-boosted* trending posts according to tags.
+
   
 * ### Connect
 
