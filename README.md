@@ -72,6 +72,31 @@ With this, users can make analysis and post their analysis results and findings 
 TAGS selection added.
 Now, user can select the tags to see *non-boosted* trending posts according to tags.
 
+* ### Update 15.04.2018
+
+## New Features
+* ### BEFORE : No bot addition by user, only the ones in the current array.
+```
+var bots = ["postdoctor", "moneymatchgaming", "slimwhale", "boostbot", "honestbot", "ebargains", "lost-ninja", "estream.studios", "adriatik", "redwhale", "minnowhelper", "mrswhale", "foxyd", "mitsuko", "dailyupvotes", "lovejuice", "steembloggers", "booster", "megabot", "voterunner", "authors.league", "canalcrypto", "whalebuilder", "mercurybot", "msp-bidbot", "promobot", "upmewhale", "redlambo", "lrd", "lightningbolt", "sunrawhale", "upyou", "thebot", "onlyprofitbot", "pushbot", "flymehigh", "nado.bot", "seakraken", "spydo", "childfund", "minnowvotes", "dolphinbot", "upme", "upboater", "proffit", "bluebot", "brupvoter", "oceanwhale", "jerrybanfield", "luckyvotes", "minnowfairy", "estabond", "bodzila", "peace-bot", "appreciator", "discordia", "emperorofnaps", "zapzap", "cryptoempire", "bearwards", "alphaprime", "therising", "buildawhale", "aksdwi", "sleeplesswhale", "isotonic", "noicebot", "upgoater", "dlivepromoter", "upmyvote", "youtake", "smartsteem", "fishbaitbot", "rocky1", "shares", "boomerang", "brandonfrye", "postpromoter", "pushup", "singing.beauty", "edensgarden", "pwrup", "inciter", "chronocrypto", "allaz", "sneaky-ninja"];
+```
+
+### AFTER :
+A bot addition button added to project.
+
+![image.png](https://cdn.utopian.io/posts/04825f432b9047f844519d1b2e7e3d598d27image.png)
+
+When pressed, the current list of the bots is shown and there is an input box where the user can enter the name of the new bot.
+
+![image.png](https://cdn.utopian.io/posts/9864d1f5224f6c315e3cf404595b212e7dccimage.png)
+
+Entering the new bot ( or circle voters ) name, it is added to the bot array.
+
+![image.png](https://cdn.utopian.io/posts/65777c3d7b85b1aa9b5c8b9c289047fc9c52image.png)
+
+As the close button is pressed, the list will be shown eliminating the posts that are upvoted by the new chosen bot or user.
+
+![image.png](https://cdn.utopian.io/posts/b1e5ff69fcaf5a78595c91c22e9bc9c789bcimage.png)
+
   
 * ### Connect
 
