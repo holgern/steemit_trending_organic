@@ -36,9 +36,9 @@
       position: absolute;
       height: 54px;
       text-align: center;
+      width: 900px;
       left: 200px;
       top: 10px;
-      width: 900px;
     }
     .gwd-h1-1ez0 {
       position: absolute;
@@ -53,11 +53,11 @@
       position: absolute;
       background-image: none;
       background-color: rgb(223, 219, 219);
-      width: 1340px;
-      height: 450px;
       overflow: auto;
-      left: 15px;
-      top: 119px;
+      width: 103.08%;
+      height: 120%;
+      left: 0.15%;
+      top: 21.27%;
     }
     .gwd-div-38rd {
       position: absolute;
@@ -194,60 +194,161 @@
       left: 403px;
       top: 99px;
     }
+    .gwd-div-1snt {
+      position: absolute;
+      width: 45.31%;
+      left: 55px;
+      top: 55px;
+      background-image: none;
+      background-color: transparent;
+      height: 120%;
+    }
+    .gwd-div-19pf {
+      position: absolute;
+      width: 173px;
+      height: 57px;
+      left: 16px;
+      top: 24px;
+    }
+    .gwd-input-1lyw {
+      transform-style: preserve-3d;
+      transform: translate3d(20px, 0px, 0px);
+    }
+    .gwd-div-n5t9 {
+      position: absolute;
+      width: 197.458px;
+      background-image: none;
+      left: 14px;
+      top: 61px;
+      background-color: rgb(241, 237, 237);
+      height: 600px;
+      overflow: auto;
+    }
+    .gwd-div-1jhm {
+      left: 69px;
+      top: 65px;
+    }
+    .gwd-div-1lwj {
+      margin: 10px;
+      top: 22px;
+      left: 0px;
+      border-style: none;
+    }
+    .gwd-div-dczj {
+      left: 0px;
+      top: 0px;
+    }
+    .gwd-input-e40c {
+      border-style: outset;
+      left: 232px;
+      top: 86px;
+    }
+    .gwd-div-xush {
+      border-radius: 0px;
+    }
+    .gwd-input-1sna {
+      border-top-right-radius: 0px;
+      transform: translate3d(480px, 60px, 0px);
+    }
+    .gwd-input-pru9 {
+      top: 0px;
+      transform-style: preserve-3d;
+      left: 120px;
+      transform: translate3d(180px, 60px, 0px);
+    }
+    .gwd-p-rywd {
+      position: absolute;
+      width: 114px;
+      height: 22px;
+      transform-origin: 118.75px 14.0625px 0px;
+      text-align: center;
+      left: 43px;
+      top: 42px;
+    }
+    .gwd-input-11yr {
+      transform-style: preserve-3d;
+      top: 0px;
+      left: 280px;
+      transform: translate3d(200px, 100px, 0px);
+    }
   </style>
+</head>
+
+<body class="htmlNoPages">
+  <div class="gwd-div-1snt" id="bots_div">
+    <div class="gwd-div-n5t9" id="name_the_bots"></div>
+    <input id="add_new_bot" type="button" value=" Add New Bot " class="gwd-input-1lyw gwd-input-1sna" onclick="add_new_bot()">
+    <input type="text" id="username" value="botname" class="gwd-input-pru9">
+    <p class="gwd-p-rywd">Available Bots</p>
+    <input id="close" type="button" value=" Close " onclick="close_bot()" class="gwd-input-11yr">
+  </div>
   <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
   <script language="JavaScript">
     steem.api.setOptions({
       url: 'https://api.steemit.com'
     });
-  
-  steem.api.getTrendingTags("", 100, function(err, result) {
-  
-    var tags=[];
-   
-    for (let i = 1; i < result.length; i++) {
-     tags[i]=result[i].name;
-       document.getElementById('tags').add( new Option( tags[i] ) );
-    }
-    
-    console.log(tags);
-    
 
-     start(document.getElementById('tags').value);
-});
-    
-   
-    
-    
+    document.getElementById("bots_div").style.display = 'none';
+     // bot names as global variable
+    var bots = ["postdoctor", "moneymatchgaming", "slimwhale", "boostbot", "honestbot", "ebargains", "lost-ninja", "estream.studios", "adriatik", "redwhale", "minnowhelper", "mrswhale", "foxyd", "mitsuko", "dailyupvotes", "lovejuice", "steembloggers", "booster", "megabot", "voterunner", "authors.league", "canalcrypto", "whalebuilder", "mercurybot", "msp-bidbot", "promobot", "upmewhale", "redlambo", "lrd", "lightningbolt", "sunrawhale", "upyou", "thebot", "onlyprofitbot", "pushbot", "flymehigh", "nado.bot", "seakraken", "spydo", "childfund", "minnowvotes", "dolphinbot", "upme", "upboater", "proffit", "bluebot", "brupvoter", "oceanwhale", "jerrybanfield", "luckyvotes", "minnowfairy", "estabond", "bodzila", "peace-bot", "appreciator", "discordia", "emperorofnaps", "zapzap", "cryptoempire", "bearwards", "alphaprime", "therising", "buildawhale", "aksdwi", "sleeplesswhale", "isotonic", "noicebot", "upgoater", "dlivepromoter", "upmyvote", "youtake", "smartsteem", "fishbaitbot", "rocky1", "shares", "boomerang", "brandonfrye", "postpromoter", "pushup", "singing.beauty", "edensgarden", "pwrup", "inciter", "chronocrypto", "allaz", "sneaky-ninja"];
+
+
+
+    steem.api.getTrendingTags("", 100, function(err, result) {
+
+
+
+      var tags = [];
+
+      for (let i = 1; i < result.length; i++) {
+        tags[i] = result[i].name;
+        document.getElementById('tags').add(new Option(tags[i]));
+      }
+
+      console.log(tags);
+      document.getElementById('tags').disabled = true;
+      document.getElementById('addbot').disabled = true;
+
+      start(document.getElementById('tags').value);
+    });
+
+
+
+
 
     var names = [];
-  
-   
-    function re_start(){
-      spinner.style.display = "block"
-      document.getElementById("order").innerHTML ="";
-        document.getElementById("poster").innerHTML ="";
-       document.getElementById("link").innerHTML = "";
-        document.getElementById("vote_qty").innerHTML = "";
-        document.getElementById("vote_value").innerHTML ="";
+
+
+    function re_start() {
+      document.getElementById('tags').disabled = true;
+       document.getElementById('addbot').disabled = true;
       
+      
+      spinner.style.display = "block"
+      document.getElementById("order").innerHTML = "";
+      document.getElementById("poster").innerHTML = "";
+      document.getElementById("link").innerHTML = "";
+      document.getElementById("vote_qty").innerHTML = "";
+      document.getElementById("vote_value").innerHTML = "";
+
       start(document.getElementById('tags').value);
     }
-    
-    
-    
-    function start(val){
-    
-   
-    if (val=="all"){
-      val="";
-      search(val);
+
+
+
+    function start(val) {
+
+
+
+      if (val == "all") {
+        val = "";
+        search(val);
+      } else {
+        search(val);
+      }
+
     }
-    else{
-      search(val);
-    }
-    
-    }
+
     function search(val)
 
      {
@@ -306,64 +407,17 @@
       };
       steem.api.getDiscussionsByTrending(query, function(err, result) {
         post_array = post_array.concat(result);
-
-        form_array3(post_array);
-
-      });
-
-
-    }
-
-    function form_array3(result) {
-
-      var post_array = [];
-      post_array = result;
-
-
-      var aut = result[299].author;
-      var perm = result[299].permlink;
-      var query = {
-        tag: '',
-        limit: 100,
-        start_author: aut,
-        start_permlink: perm
-      };
-      steem.api.getDiscussionsByTrending(query, function(err, result) {
-        post_array = post_array.concat(result);
-
-        form_array4(post_array);
-
-      });
-
-
-    }
-
-    function form_array4(result) {
-
-      var post_array = [];
-      post_array = result;
-
-
-      var aut = result[399].author;
-      var perm = result[399].permlink;
-      var query = {
-        tag: '',
-        limit: 100,
-        start_author: aut,
-        start_permlink: perm
-      };
-      steem.api.getDiscussionsByTrending(query, function(err, result) {
-        post_array = post_array.concat(result);
-
-
         evaluate(post_array);
+
+
       });
 
 
     }
+
 
     function evaluate(result) {
-      var bots = ["postdoctor", "moneymatchgaming", "slimwhale", "boostbot", "honestbot", "ebargains", "lost-ninja", "estream.studios", "adriatik", "redwhale", "minnowhelper", "mrswhale", "foxyd", "mitsuko", "dailyupvotes", "lovejuice", "steembloggers", "booster", "megabot", "voterunner", "authors.league", "canalcrypto", "whalebuilder", "mercurybot", "msp-bidbot", "promobot", "upmewhale", "redlambo", "lrd", "lightningbolt", "sunrawhale", "upyou", "thebot", "onlyprofitbot", "pushbot", "flymehigh", "nado.bot", "seakraken", "spydo", "childfund", "minnowvotes", "dolphinbot", "upme", "upboater", "proffit", "bluebot", "brupvoter", "oceanwhale", "jerrybanfield", "luckyvotes", "minnowfairy", "estabond", "bodzila", "peace-bot", "appreciator", "discordia", "emperorofnaps", "zapzap", "cryptoempire", "bearwards", "alphaprime", "therising", "buildawhale", "aksdwi", "sleeplesswhale", "isotonic", "noicebot", "upgoater", "dlivepromoter", "upmyvote", "youtake", "smartsteem", "fishbaitbot", "rocky1", "shares", "boomerang", "brandonfrye", "postpromoter", "pushup", "singing.beauty", "edensgarden", "pwrup", "inciter", "chronocrypto", "allaz", "sneaky-ninja", "utopian-io"];
+
       var activevotes = [];
       var activevoter = []
       var n_result = [];
@@ -397,7 +451,7 @@
         document.getElementById("order").innerHTML = document.getElementById("order").innerHTML + ((i + 1) + "<br>");
         document.getElementById("poster").innerHTML = document.getElementById("poster").innerHTML + (result[i].author + "<br>");
         var str = "https://steemit.com/@" + result[i].author + "/" + result[i].permlink;
-        var lin = (result[i].permlink).substring(0, 70) + ".......";
+        var lin = (result[i].permlink).substring(0, 60);
 
         document.getElementById("link").innerHTML = document.getElementById("link").innerHTML + lin.link(str) + "<br />";
         document.getElementById("vote_qty").innerHTML = document.getElementById("vote_qty").innerHTML + result[i].active_votes.length + "<br />";
@@ -405,14 +459,67 @@
 
       }
       spinner.style.display = "none"
+      document.getElementById('tags').disabled = false;
+       document.getElementById('addbot').disabled = false;
 
 
     }
-  </script>
-</head>
 
-<body class="htmlNoPages">
-  <h1 class="gwd-p-pndd">STEEMIT ORGANIC TRENDING POSTS</h1><em class="gwd-h1-1ez0">*Posts in trending page that didn't use upvote bots*</em>
+    function add_bot() {
+      document.getElementById("bots_div").style.display = 'block';
+      document.getElementById("main_container").style.display = 'none';
+      document.getElementById("rank_tag").style.display = 'none';
+      document.getElementById("author_tag").style.display = 'none';
+      document.getElementById("tags_div").style.display = 'none';
+      document.getElementById("link_tag").style.display = 'none';
+      document.getElementById("votes_tag").style.display = 'none';
+      document.getElementById("value_tag").style.display = 'none';
+      document.getElementById("info_tag").style.display = 'none';
+      document.getElementById("button_div").style.display = 'none';
+      document.getElementById("name_the_bots").innerHTML="";
+      for (let i = 0; i < bots.length; i++) {
+         document.getElementById("name_the_bots").innerHTML=document.getElementById("name_the_bots").innerHTML+bots[i]+"<br />";
+      }
+      
+
+    }
+    
+    function add_new_bot() {
+
+     var new_bot = document.getElementById("username").value;
+      if ((new_bot=="")||(new_bot=="botname")){
+        
+        window.alert("Please enter a valid bot name");
+      }
+      
+      if ((new_bot!="")&&(new_bot!="botname")){
+        bots.push(new_bot);
+        var div_in=document.getElementById("name_the_bots").innerHTML
+        document.getElementById("name_the_bots").innerHTML=new_bot+"<br />"+div_in;
+        
+      }
+      
+      
+      
+    }
+    
+    function close_bot(){
+      document.getElementById("bots_div").style.display = 'none';
+      document.getElementById("main_container").style.display = 'block';
+      document.getElementById("rank_tag").style.display = 'block';
+      document.getElementById("author_tag").style.display = 'block';
+      document.getElementById("tags_div").style.display = 'block';
+      document.getElementById("link_tag").style.display = 'block';
+      document.getElementById("votes_tag").style.display = 'block';
+      document.getElementById("value_tag").style.display = 'block';
+      document.getElementById("info_tag").style.display = 'block';
+      document.getElementById("button_div").style.display = 'block';
+      re_start();
+      
+    }
+    
+  </script>
+  <h1 class="gwd-p-pndd">STEEMIT ORGANIC TRENDING POSTS</h1><em class="gwd-h1-1ez0" id="info_tag">*Posts in trending page that didn't use upvote bots*</em>
   <div class="gwd-div-6p60" id="main_container">
     <div class="gwd-div-38rd gwd-div-1ei9 gwd-div-1655" id="poster"></div>
     <div class="gwd-div-38rd gwd-div-1ei9 gwd-div-1ns2 gwd-div-16pi" id="vote_qty"></div>
@@ -420,11 +527,11 @@
     <div class="gwd-div-38rd gwd-div-1ei9 gwd-div-1kvn" id="order"></div>
     <div class="gwd-div-38rd gwd-div-vby6" id="link"></div>
   </div>
-  <p class="gwd-p-edbb gwd-p-1kka">AUTHOR</p>
-  <p class="gwd-p-edbb gwd-p-1kka gwd-p-3ej1 gwd-p-1a9u">LINK</p>
-  <p class="gwd-p-edbb gwd-p-1kka gwd-p-3ej1 gwd-p-1hx8"># of VOTES</p>
-  <p class="gwd-p-edbb gwd-p-1kka gwd-p-3ej1 gwd-p-1hx8 gwd-p-1g1m">VOTES VALUE</p>
-  <p class="gwd-p-edbb">RANK</p>
+  <p class="gwd-p-edbb gwd-p-1kka" id="author_tag">AUTHOR</p>
+  <p class="gwd-p-edbb gwd-p-1kka gwd-p-3ej1 gwd-p-1a9u" id="link_tag">LINK</p>
+  <p class="gwd-p-edbb gwd-p-1kka gwd-p-3ej1 gwd-p-1hx8" id="votes_tag"># of VOTES</p>
+  <p class="gwd-p-edbb gwd-p-1kka gwd-p-3ej1 gwd-p-1hx8 gwd-p-1g1m" id="value_tag">VOTES VALUE</p>
+  <p class="gwd-p-edbb" id="rank_tag">RANK</p>
   <div class="gwd-div-1d6p" id="spinner">
     <div class="loader" id="loader"></div>
   </div>
@@ -432,9 +539,11 @@
   <div class="gwd-div-4l28" id="tags_div">
     <select class="gwd-select-15e9" id="tags" onchange="re_start()">
       <option value="all">all</option>
-
     </select>
     <p class="gwd-p-wpmt">TAGS :</p>
+  </div>
+  <div class="gwd-div-19pf" id="button_div">
+    <input id="addbot" type="button" value=" Add New Bot " class="gwd-input-1lyw" onclick="add_bot()">
   </div>
 </body>
 
