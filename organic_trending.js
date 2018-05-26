@@ -232,25 +232,20 @@
         document.getElementById("qty_"+i).innerHTML = result[i].active_votes.length;
         document.getElementById("sbd_"+i).innerHTML = result[i].pending_payout_value;
         
-		  // convert Markdown text to HTML using REMARKABLE
-        var md = new Remarkable({
-          html: true, // Enable HTML tags in source
-          xhtmlOut: false, // Use '/' to close single tags (<br />)
-          breaks: false, // Convert '\n' in paragraphs into <br>
-          linkify: true, // Autoconvert URL-like text to links
+		const metadata = JSON.parse(result[i].json_metadata)
+        const thumbnail = metadata.image && metadata.image.length > 0 ? metadata.image.shift() : null
 
-          // Enable some language-neutral replacement + quotes beautification
-          typographer: false,
-
-          // Double + single quotes replacement pairs, when typographer enabled,
-          // and smartquotes on. Set doubles to '«»' for Russian, '„“' for German.
-          quotes: '“”‘’'
-});
+        img = document.createElement('img');
+        img.src = "https://steemitimages.com/0x0/"+thumbnail;
+        document.getElementById("pic_" + i).appendChild(img); 
+    
         
+        var text=result[i].body
+		 var lin2 = "read more";
         
-        var bod=result[i].body
-        document.getElementById("pb_"+i).style.fontSize = "medium";
-        document.getElementById("pb_"+i).innerHTML =md.render(bod).substring(0,500)+".....";
+        var stripped = text.replace(/\!*\[.*\]\(.+\)/g, '').replace(/(<([^>]+)>)/ig, '').replace(/[^a-zA-Z0-9\!\?\,\.\;\'\"]/g, ' ');
+        document.getElementById("pb_" + i).innerHTML = stripped.substring(0, 600) + "....." + lin2.link(str);
+        
       }
 
 
@@ -281,12 +276,8 @@
        var ind=bots.indexOf(in_text);
         bots.splice(ind,1);
         
-       document.getElementById("p_" + index).innerHTML = in_text;
-        
-
+       document.getElementById("p_" + index).innerHTML = in_text;       
       }
-
-
 
     }
 
