@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Milligram provides a minimal setup of styles for a fast and clean starting point. Specially designed for better performance and higher productivity with fewer properties to reset resulting in cleaner code.">
+		<title>SteemOrganic | The missing organic feed.</title>
+		<link rel="icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+		<link rel="stylesheet" href="lib/normalize.css/normalize.css">
+		<link rel="stylesheet" href="lib/milligram/dist/milligram.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <template>
+        <div class="row">
+            <div class="column author">
+               <a href="https://steemit.com/@adsactly/" class="author_link" target="_blank"><h5>adsactly</h5></a>
+              <button class="button button-negative button-small" onclick='add_blacklist()' value='test'>Add to blacklist</button>
+              <a href="https://steemit.com/@adsactly/adsactly-poetry-loving-california-living" target="_blank"><img src="https://steemitimages.com/0x0/https://i.imgur.com/WwwsY7w.jpg"></a>
+              <p class="votes">Votes: 999</p>
+              <p class="payout">Payout: $999</p>
+            </div>
+            <div class="column post_content">              
+              <a href="https://steemit.com/@adsactly/adsactly-poetry-loving-california-living" target="_blank"><h5 class="post_title">ADSactly Poetry - "Loving California Living"</h5></a>
+              <p>"Loving California Living" Let me introduce you to California and my hometown, Santa Monica. Santa Monica is an amazing city on the beach here in California. There are many beach cities in California but if you ask anyone living here in Southern California about Santa Monica, they will say that it is a diverse city indeed... </p>
+              <a href="https://steemit.com/@adsactly/adsactly-poetry-loving-california-living" target="_blank">read more</a>
+            </div>
+          </div>
+    </template>
+	</head>
+	<body>
+
+		<main class="wrapper">
+
+			<header class="center main_header">
+        <h1>SteemOrganic</h1>
+        <label for="tags" class="label">TAGS</label>
+        <select id="tags" class="select" onchange="refresh()">
+          <option value="all">all</option>
+        </select>
+        <button class="button-primary" onclick="show_bots()">Add to blacklist</button>        
+        <!-- Trigger/Open The Modal -->
+        <button class="button-primary hide" onclick="refresh()" id="refresh">Refresh</button>        
+      </header>
+      <div class="container content">
+        <div class="row">
+          <div class="column column-25 sidebar">
+              <section class="center">
+                  <h3>Top tags</h3>
+                  <nav id="top_tags"> 
+                    <ul>
+                    </ul>
+                  </nav>
+                </section>
+          </div>
+          <div class="column">            
+            <div id="spinner">
+                <div class="loader" id="loader"></div>
+            </div>                
+            <section id="posts">
+              <h2></h2>
+            </section>
+          </div>
+        </div>
+      </div>
+
+			<footer class="footer">
+				<section class="container">
+					<p>Coded with ♥ by <a target="_blank" href="http://steemit.com/@cryptouru" title="CJ Patoilo">CryptoUru</a> for <a target="_blank" href="http://steemit.com/@firedream">FireDream</a></p>
+				</section>
+			</footer>
+
+      <!-- The Modal -->
+      <div id="botModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div id="bot_list" class="hide">
+            <input type="text" placeholder="Steem bot name" id="botName">
+            <div class="button button-possitive" onclick="add_bot()">Add</div>
+            <div class="button button-negative close" onclick="close_bots()">Close <span>&times;</span></div>
+            <ul>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+		</main>
+    
+    <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/remarkable/1.7.1/remarkable.min.js"></script>
+		<script src="scripts/main.js"></script>
+
+	</body>
+</html>
