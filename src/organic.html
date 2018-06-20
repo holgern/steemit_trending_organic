@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Organic_Trending</title>
+  <meta name="generator" content="Google Web Designer 3.0.1.0319">
+  <link rel="stylesheet" type="text/css" href="styles/organic_trending.css" id="gwd-text-style">
+  
+</head>
+
+<body class="htmlNoPages">
+  <div class="gwd-div-oys3" id="container">
+  </div>
+  <div class="button gwd-div-uvd3" id="button_div">
+    <input id="addbot" type="button" value=" Add New Bot " class="gwd-input-1lyw" onclick="add_bot()">
+  </div>
+  <div class="button gwd-div-14kf" id="button_div_1">
+    <input id="addbot_1" type="button" value=" Refine " class="gwd-input-1lyw" onclick="re_start()">
+  </div>
+  <div class="tag" id="tags_div">
+    <select class="tag_change" id="tags" onchange="re_start()">
+      <option value="all">all</option>
+    </select>
+    <p class="tag_label">TAGS :</p>
+  </div>
+  <div class="gwd-div-1snt" id="bots_div">
+    <div class="gwd-div-n5t9" id="name_the_bots"></div>
+    <input id="add_new_bot" type="button" value=" Add New Bot " class="gwd-input-1lyw gwd-input-1sna" onclick="add_new_bot()">
+    <input type="text" id="username" value="botname" class="gwd-input-pru9">
+    <p class="gwd-p-rywd">Available Bots</p>
+    <input id="close" type="button" value=" Close " class="gwd-input-11yr" onclick="close_bot()">
+  </div>
+  <div class="gwd-div-1d6p" id="spinner">
+    <div class="loader" id="loader"></div>
+  </div>
+  <script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/remarkable/1.7.1/remarkable.min.js"></script>
+  <script src="scripts/organic_trending.js"></script>
+  <script language="JavaScript">
+    
+  </script>
+  <h1 class="gwd-span-141q">STEEMIT ORGANIC TRENDING POSTS</h1>
+  <span class="gwd-span-uv6d">Posts in trending page that didn't use upvote bots.............@firedream</span>
+</body>
+
+</html>
