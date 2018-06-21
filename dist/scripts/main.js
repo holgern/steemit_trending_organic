@@ -35,22 +35,23 @@ var bots = ["postdoctor", "moneymatchgaming", "slimwhale", "boostbot", "honestbo
 render_bots();
 
 // get and render trending tags upon initialization 
-steem.api.getTrendingTags("", 100, function(err, result) {
+steem.api.getTrendingTags("", 2, function(err, result) {
   var tags = [];
   var names = [];
   console.log(result);
-  var top_tags = document.querySelector('#top_tags');
-  for (let i = 1; i < result.length; i++) {
-    tags[i] = result[i].name;
+  //var top_tags = document.querySelector('#top_tags');
+  var own_tags = ["comedyopenmic", "comedyopenmicespanol"]
+  for (let i = 1; i < own_tags.length; i++) {
+    tags[i] = own_tags[i];
     document.getElementById('tags').add(new Option(tags[i], tags[i]));
-    var li = document.createElement("li");
-    li.innerHTML = "<a href='#"+tags[i]+"' >" + tags[i] + "</a>";
-    top_tags.querySelector('ul').append(
-      document.importNode(
-        li,
-        true
-      )
-    );
+    //var li = document.createElement("li");
+    //li.innerHTML = "<a href='#"+tags[i]+"' >" + tags[i] + "</a>";
+    //top_tags.querySelector('ul').append(
+    //  document.importNode(
+    //    li,
+    //    true
+    //  )
+    //);
   }
   if(state != '') {
     document.getElementById('tags').value = state;
@@ -62,7 +63,7 @@ steem.api.getTrendingTags("", 100, function(err, result) {
 function start(val) 
 {
   if (val == "all") {
-    val = "";
+    val = "comedyopenmic";
     search(val);
   } else {
     search(val); // send the tag to search function
@@ -81,7 +82,7 @@ function search(val, index)
     query.start_permlink = index.perm
   }
   // get the first 100 trending post 
-  steem.api.getDiscussionsByTrending(query, function(err, result) {
+  steem.api.getDiscussionsByCreated(query, function(err, result) {
     post_array = post_array.concat(result);
     evaluate(post_array);
   });
@@ -253,6 +254,9 @@ function create_div(result)
     var links = content.querySelectorAll('a');
     var image = content.querySelector('.author img');
     var votes = content.querySelector('.author .votes');
+    var comments = content.querySelector('.author .comments');
+    var post_tags = content.querySelector('.post_tags');
+    var post_user = content.querySelector('.post_user');
     var payout = content.querySelector('.author .payout');
     var title = content.querySelector('.post_title');
     var post_content = content.querySelector('.post_content p');
@@ -281,7 +285,7 @@ function create_div(result)
     
     var imgSrc = "https://steemitimages.com/0x0/"+thumbnail;
     var lin2 = "...read more";
-    var showContent = stripped.substring(0, 250) + ".....";
+    var showContent = stripped.substring(0, 300) + ".....";
 
     links.forEach(link => {
       link.href = permLink;
@@ -291,6 +295,14 @@ function create_div(result)
     content.querySelector('.author a').setAttribute("href", authorLink);
     votes.innerHTML = 'Votes: ' + result[i].active_votes.length;
     payout.innerHTML = 'Payout: $' + result[i].pending_payout_value.replace(' SBD', '');
+    comments.innerHTML = 'Comments: ' + result[i].children;
+
+    post_tags.innerHTML = 'Tags: ' + metadata.tags.toString();
+    var mentioned_user = metadata.users && metadata.users.length > 0 ? metadata.users.toString() : null
+    post_user.innerHTML = 'Mentioned user: ' + mentioned_user;
+    //for (let j = 0; j < result[i].tags.length; j++) { 
+    //    tags.innerHTML = tags.innerHTML + result[i].tags[j]
+    //}
     title.innerHTML = textTitle;
     post_content.innerHTML = showContent;
     image.src = imgSrc;
