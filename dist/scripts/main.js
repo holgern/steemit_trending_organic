@@ -35,23 +35,24 @@ var bots = ["postdoctor", "moneymatchgaming", "slimwhale", "boostbot", "honestbo
 render_bots();
 
 // get and render trending tags upon initialization 
-steem.api.getTrendingTags("", 2, function(err, result) {
+steem.api.getTrendingTags("", 10, function(err, result) {
   var tags = [];
   var names = [];
   console.log(result);
-  //var top_tags = document.querySelector('#top_tags');
-  var own_tags = ["comedyopenmic", "comedyopenmicespanol"]
+  var top_tags = document.querySelector('#top_tags');
+  var own_tags = ["deutsch", "life", "photography", "steemit", "bitcoin",  "blog", "cryptocurrency", "funny", "art", "news", "nature", "meme", "travel", "crypto", "story", "food", "steem", "photo", "dtube", "video", "money", "new", "blockchain", "love", "writing", "music", "fun", "health", "technology", "politics"]
+  
   for (let i = 1; i < own_tags.length; i++) {
     tags[i] = own_tags[i];
     document.getElementById('tags').add(new Option(tags[i], tags[i]));
-    //var li = document.createElement("li");
-    //li.innerHTML = "<a href='#"+tags[i]+"' >" + tags[i] + "</a>";
-    //top_tags.querySelector('ul').append(
-    //  document.importNode(
-    //    li,
-    //    true
-    //  )
-    //);
+    var li = document.createElement("li");
+    li.innerHTML = "<a href='#"+tags[i]+"' >" + tags[i] + "</a>";
+    top_tags.querySelector('ul').append(
+      document.importNode(
+        li,
+        true
+      )
+    );
   }
   if(state != '') {
     document.getElementById('tags').value = state;
@@ -63,7 +64,7 @@ steem.api.getTrendingTags("", 2, function(err, result) {
 function start(val) 
 {
   if (val == "all") {
-    val = "comedyopenmic";
+    val = "";
     search(val);
   } else {
     search(val); // send the tag to search function
@@ -74,7 +75,7 @@ function start(val)
 function search(val, index)
 {
   var query = {
-    tag: val,
+    tag: "deutsch",
     limit: 100
   };
   if(index) {
@@ -84,29 +85,44 @@ function search(val, index)
   // get the first 100 trending post 
   steem.api.getDiscussionsByCreated(query, function(err, result) {
     post_array = post_array.concat(result);
-    evaluate(post_array);
+    evaluate(post_array, val);
   });
 }
 
+
+
 // check the voters according to bot array and filter.
-function evaluate(result) 
+function evaluate(result, val) 
 { 
   var activevotes = [];
   var activevoter = []
+  var usedtags = [];
   var n_result = [];
   var control = 0;
   
   var i = 0;
+  var j = 0;
 
   for (let i = 0; i < result.length; i++) {
     control = 0;
     activevotes = result[i].active_votes;
+    const metadata = JSON.parse(result[i].json_metadata)
+    usedtags = metadata.tags
     for (let j = 0; j < activevotes.length; j++) {
 
       if (bots.includes(activevotes[j].voter)) {
         control = 1;
       }
     }
+    if (val != "")
+    {
+        control = 1;
+    }
+    //if (let j = 0; j < usedtags.length; j++) {
+        if (usedtags.includes(val)) {
+            control = 0;
+        }
+    //}
     if (control == 0) {
       n_result.push(result[i]);
     }
